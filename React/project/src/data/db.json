@@ -1,0 +1,10 @@
+{
+  "blogs": [
+    {
+      "title": "First Multiline Blog!!",
+      "body": "Hi!<br/>Just to test if this is a working<br/><br/><br/>multiline<br/><br/><br/><br/><br/>blog",
+      "author": "Username",
+      "id": 1
+    }
+  ]
+}
