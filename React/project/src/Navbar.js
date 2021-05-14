@@ -17,7 +17,7 @@ const Navbar = (props) => {
 
     return(
         <nav className="navbar">
-        <Link to="/"><h1>Ninja Blogs</h1></Link>
+        <Link to="/"><h1>React Blogs</h1></Link>
         <div className="links">
 
         {props.user && <Link to="/dashboard">Dashboard</Link>}
@@ -34,6 +34,12 @@ const Navbar = (props) => {
             borderRadius : "8px"
           }}>Login</Link>}
 
+            {props.user && <Link to="/search" style={{
+            color : "white",
+            backgroundColor : "#f1356d",
+            borderRadius : "8px"
+          }}><span>&#x1F50E;</span></Link>}
+
           {props.user && <Link to="/create" style={{
             color : "white",
             backgroundColor : "#f1356d",
@@ -43,7 +49,11 @@ const Navbar = (props) => {
           {props.user && <button onClick={handleLogout} style={{
             color : "white",
             backgroundColor : "#f1356d",
-            borderRadius : "8px"
+            borderRadius : "8px",
+            borderWidth : "0px",
+            padding : "6px",
+            marginLeft : "16px",
+            fontSize : "16px"
           }}>Logout</button>}
 
         </div>

@@ -117,6 +117,23 @@ router.post('/update',(req,res,next)=>{
   }
 })
 
+router.post('/delete', (req,res,next)=>{
+  console.log(req.body);
+  if(req.body.ownerid!=firebase.auth().currentUser.uid) res.json({error:'Unauthorised access'});
+  else{
+    db.collection('blogs').doc(req.body.blogid).delete().then(() => {
+        db.collection('likes').where('id','==',req.body.blogid).get().then((querySnapshot)=>{
+          if(querySnapshot.size==0) res.error({error:"invalid request"});
+              querySnapshot.forEach((like)=>{
+              like.ref.delete();
+    })    
+        })
+  }).catch((error) => {
+      res.json({error:error.message});
+  });
+  }
+});
+
 router.get('/userBlogs',(req,res,next)=>{
   if(firebase.auth().currentUser==null) res.json({'error':'User not found'});
   else{
@@ -131,6 +148,68 @@ router.get('/userBlogs',(req,res,next)=>{
       res.json({error:err.message});
     });
   }
+});
+
+router.post('/getliked', (req,res,next)=>{
+
+  const user=firebase.auth().currentUser;
+  db.collection('likes').where('uid','==',user.uid).where('id','==',req.body.blogid).get().then((querySnapshot)=>{
+    const liked=querySnapshot.size;
+    db.collection('likes').where('id','==',req.body.blogid).get().then((querySnapshot)=>{
+      res.json({liked:liked, likes:querySnapshot.size});
+    })
+    
+  }).catch((err)=>{
+    res.json({error:'Could not fetch likes'});
+  });
+
+});
+
+router.post('/like', (req,res,next)=>{
+  const user=firebase.auth().currentUser;
+  if(user==null) res.json({error:"User not found"});
+  db.collection('likes').where('uid','==',user.uid).where('id','==',req.body.blogid).get().then((querySnapshot)=>{
+    if(querySnapshot.size!=0) res.error({error:"Multiple Likes not allowed"});
+    db.collection('likes').add({uid:user.uid, id:req.body.blogid}).then(()=>res.send())
+    .catch((err)=>{
+      res.json({error:err.message});
+  })
+}).catch((err)=>{
+  res.json({error:err.message});
+})
+});
+
+router.post('/unlike', (req,res,next)=>{
+
+  const user=firebase.auth().currentUser;
+
+  if(user==null) res.json({error:"User not found"});
+
+  db.collection('likes').where('uid','==',user.uid).where('id','==',req.body.blogid).get()
+  .then((querySnapshot)=>{
+    if(querySnapshot.size==0) res.error({error:"invalid request"});
+    querySnapshot.forEach((like)=>{
+      like.ref.delete();
+    })
+
+    }).then(()=>{
+      res.send();
+    }).catch((err)=>{
+    res.json({error:err.message});
+    })
+});
+
+router.get('/all', (req,res,next)=>{
+  if(firebase.auth().currentUser==null) res.json({error:'user not found'});
+  db.collection('blogs').where('private','==',false).get().then((querySnapshot)=>{
+    blogs=[];
+    querySnapshot.forEach((doc)=>{
+      blogs.push({blogid:doc.id,blog:doc.data()});
+    })
+    res.send(blogs);
+  }).catch((error)=>{
+    res.json({error:error.message});
+  })
 });
 
 module.exports = router;

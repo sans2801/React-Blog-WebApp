@@ -115,3 +115,30 @@ img.homepage-image{
 h1.homepage-text{
   text-align: center;
 }
+
+img.profilePic{
+  width: 10%;
+}
+
+div.linkBlock a{
+  text-decoration: none;
+}
+
+div.linkBlock{
+  margin-top: 10px;
+  padding: 10px;
+  border-style: solid;
+  border-radius: 8px;
+  border-width: thin;
+}
+
+div.linkBlock:hover{
+  box-shadow: 3px 3px grey;
+}
+
+div.blogSpace{
+  border-style: solid;
+  border-radius: 8px;
+  border-width: thin;
+  padding: 10px;
+}

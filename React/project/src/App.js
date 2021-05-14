@@ -8,6 +8,7 @@ import BlogDetails from './BlogDetails';
 import { useState } from 'react';
 import axios from 'axios';
 import Dashboard from './Dashboard';
+import Search from './Search';
 function App() {
 
   const [user,setUser] = useState(null);
@@ -54,6 +55,10 @@ function App() {
 
               <Route exact path="/blogs/:id">
                 {user==null ? <Login user={user} onChange={handleUser}/> : <BlogDetails user={user}/>}
+              </Route>
+
+              <Route exact path="/search">
+              {user==null ? <Login user={user} onChange={handleUser}/> : <Search user={user}/>}
               </Route>
 
           </Switch>

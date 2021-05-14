@@ -35,7 +35,7 @@ const Create = (props) =>{
         const uid=props.user.uid;
         const author = props.user.displayName;
         setIsPending(true);
-        const blog={title,body,author,uid,private:true};
+        const blog={title,body,author,uid,private:true,likes:0};
         const finalBlog = (JSON.stringify(blog)).replace(/\\n/g,"<br/>").replace(/!img<</g,"<img class='imgClass' src='").replace(/>>/g,"'/>");
         axios.post('http://localhost:3001/users/firebase-blog',{'blog':JSON.parse(finalBlog)})
         .then((res)=>{
@@ -53,7 +53,7 @@ const Create = (props) =>{
             setIsPending(false)
         });
     };
-    /////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////Updating the blog
 
     const handleUpdate = (e)=>{
         e.preventDefault();
