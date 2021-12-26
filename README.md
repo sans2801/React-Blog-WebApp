@@ -44,7 +44,7 @@ For configuring the codebase, please refer to [SETUP Guide](https://github.com/p
 - In the search section, users can see all the public blogs in the descending order of their number of likes.
 <img src="https://user-images.githubusercontent.com/56474333/147415015-e09bcf9d-d5d7-4004-be4e-c62835dd749a.png" width="700" height="400"/>
 
-- Users can explore other's public blogs here and leave a like. This is how other blogs are shown to the user.
+- Users can explore other's public blogs here and leave a like. This is how other blogs are visible to the user.
 <img src="https://user-images.githubusercontent.com/56474333/147415052-d8e64919-d98c-45fe-b5ce-3544822c9fb8.png" width="700" height="500"/>
 
 
