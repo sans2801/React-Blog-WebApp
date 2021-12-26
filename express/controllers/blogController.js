@@ -41,16 +41,16 @@ module.exports.updateBlog = function(req,res,next){
 }
 
 module.exports.deleteBlog = function(req,res,next){
-    console.log(req.body);
     if(req.body.ownerid!=firebase.auth().currentUser.uid) res.json({error:'Unauthorised access'});
     else{
       db.collection('blogs').doc(req.body.blogid).delete().then(() => {
           db.collection('likes').where('id','==',req.body.blogid).get().then((querySnapshot)=>{
-            if(querySnapshot.size==0) res.error({error:"invalid request"});
-                querySnapshot.forEach((like)=>{
-                like.ref.delete();
-      })    
-          })
+            querySnapshot.forEach((like)=>{
+              like.ref.delete();
+            })
+            
+            res.json({"Message":"Successfully Deleted"});
+      })
     }).catch((error) => {
         res.json({error:error.message});
     });

@@ -17,7 +17,6 @@ const Dashboard = (props) => {
         setBlogs(res.data);
       }
       }).catch((err)=>{
-        console.log(err);
         setError(err.message);
         setIsPending(false);
       }

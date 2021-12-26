@@ -62,7 +62,6 @@ const Create = (props) =>{
         axios.post('http://localhost:3001/users/update',{ownerid:toUpdate.blog.uid,blogid:toUpdate.blogid,update:JSON.parse(finalBlog)}).then((res)=>{
             if(res.data.error) throw Error(res.data.error);
             setIsPending(false);
-            console.log(res);
             history.push(`/blogs/${toUpdate.blogid}`);
 
         }).catch((err)=>{

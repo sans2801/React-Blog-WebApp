@@ -22,11 +22,17 @@ module.exports.like = function(req,res,next){
     const user=firebase.auth().currentUser;
     if(user==null) res.json({error:"User not found"});
     db.collection('likes').where('uid','==',user.uid).where('id','==',req.body.blogid).get().then((querySnapshot)=>{
-      if(querySnapshot.size!=0) res.error({error:"Multiple Likes not allowed"});
+      if(querySnapshot.size!=0)
+      {
+        res.status(400).json({error:"Multiple Likes not allowed"});
+        return;
+      }
+
       db.collection('likes').add({uid:user.uid, id:req.body.blogid}).then(()=>res.send())
       .catch((err)=>{
         res.json({error:err.message});
     })
+
   }).catch((err)=>{
     res.json({error:err.message});
   })
@@ -37,7 +43,12 @@ module.exports.unlike = function(req,res,next){
     if(user==null) res.json({error:"User not found"});
     db.collection('likes').where('uid','==',user.uid).where('id','==',req.body.blogid).get()
     .then((querySnapshot)=>{
-      if(querySnapshot.size==0) res.error({error:"invalid request"});
+      if(querySnapshot.size==0) 
+      {
+        res.status(400).json({error:"invalid request"});
+        return;
+      }
+      
       querySnapshot.forEach((like)=>{
         like.ref.delete();
         })

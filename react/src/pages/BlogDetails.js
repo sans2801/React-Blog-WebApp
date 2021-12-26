@@ -83,6 +83,7 @@ const BlogDetails = (props) =>
     const handleDelete = ()=>{
 
         axios.post('http://localhost:3001/users/delete', {ownerid:blog.uid,blogid:id}).then((res)=>{
+            console.log(res);
             if(res.data.error) throw Error(res.data.error)
             else{
             history.push('/dashboard');}
