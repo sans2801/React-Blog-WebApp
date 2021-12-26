@@ -1,14 +1,14 @@
 # React Blogs
 A full stack web application which aims to provide a platform for users to express and articulate their thoughts in the form of fully customizable blogs. Users can write, explore and react to other's blogs.
 
-## Deployed Website Link
+## :rocket: Deployed Website Link
 
 add link
 
-## Setup
+## :keyboard: Setup
 For configuring the codebase, please refer to [SETUP Guide](https://github.com/pal-16/University-Engagement/blob/main/SETUP.md) to get started with local deployment
 
-## Tech Stack
+## :man_technologist: Tech Stack
 
 - Frontend : React
 - Backend : Node.js, Express
@@ -16,7 +16,7 @@ For configuring the codebase, please refer to [SETUP Guide](https://github.com/p
 - Testing: Jest, Supertest
 - Deployment: GitHub Actions, Heroku
 
-## Features Offered
+## :electron: Features Offered
 - Authentication using Firebase 
 - Write and submit fully customizable blogs with embedded images
 - Change blog visibility by making them private/public
@@ -24,7 +24,7 @@ For configuring the codebase, please refer to [SETUP Guide](https://github.com/p
 - Leave a like on other public blogs
 - Get the most liked blogs in the search section!
 
-## Screenshots and Working
+## :computer: Screenshots and Working
 - Home page
 <img src="https://user-images.githubusercontent.com/56474333/147413060-cabe3689-dfba-43f0-977e-abfc09f67a81.png" width="700" height="400" />
 
