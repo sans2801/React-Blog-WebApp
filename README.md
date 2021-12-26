@@ -1,5 +1,5 @@
 # React Blogs
-A full stack web application which aims to provide a platform for users to express and articulate their thoughts in the form of fully customizable blogs.
+A full stack web application which aims to provide a platform for users to express and articulate their thoughts in the form of fully customizable blogs. Users can write, explore and react to other's blogs.
 
 ## Deployed Website Link
 
