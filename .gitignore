@@ -1,4 +1,4 @@
 node_modules/
 .eslintcache
-express/firebase/serviceAccountKey.js
-express/firebase/firebaseConfig.js
+server/firebase/serviceAccountKey.json
+server/firebase/firebaseConfig.js
