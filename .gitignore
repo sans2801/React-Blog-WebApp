@@ -1,2 +1,4 @@
 node_modules/
 .eslintcache
+express/firebase/config.js
+express/firebase/firebaseConfig.js
