@@ -1,9 +1,51 @@
 import React from 'react';
 import axios from "axios";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
- 
-const Create = (props) =>{
+import SimpleExample from '../editor/Editor';
+
+const Create = (props)=> {
+  
+  const [content, setContent] = useState("");
+  const [title, setTitle] = useState("");
+  const [isPending,setIsPending]=useState(false);
+  const [error, setError]=useState(null);
+  const history = useHistory();
+
+  const handleSubmit = (e)=>{
+    e.preventDefault();
+    if(title==='') {alert('Please enter a title');return;}
+    if(content==='') {alert('Please enter contents of the blog');return;}
+    const uid=props.user.uid;
+    const blog={
+      title,content,uid,private:true,likes:0
+    };
+
+    axios.post('http://localhost:3001/users/firebase-blog',blog).then((res)=>{
+      if(res.data.error)
+      {
+          throw Error(res.data.error);
+      }
+      setIsPending(false);
+      
+      history.push(`/blogs/${res.data.blogId}`);
+      //send to other page
+      })
+      .catch((err)=>{
+          setError(err.message);
+          setIsPending(false)
+      });
+  }
+
+  return(
+    <div>
+      <SimpleExample/>
+    </div>
+  );
+}
+
+
+const Create_temp = (props) =>{
 
     const [title,setTitle] = useState('');
     const [body,setBody] = useState('');
@@ -73,7 +115,7 @@ const Create = (props) =>{
     return(    
     <div className="create">
     <h2>Create a new blog</h2>
-    <form onSubmit={handleSubmit}>
+    {/* <form onSubmit={handleSubmit}>
         <label>Blog Title</label>
         <input
           name="blog-title"
@@ -101,7 +143,8 @@ const Create = (props) =>{
         {toUpdate!=null && isPending && <button disabled>Updating Blog...</button>}
         {toUpdate!=null && error && <p>{error}</p>}
 
-    </form>
+    </form> */}
+
     </div>
     );
 }

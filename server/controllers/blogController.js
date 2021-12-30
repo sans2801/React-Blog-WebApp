@@ -5,7 +5,7 @@ const db=firebaseConfig.db
 
 module.exports.addBlog = function(req,res,next){
 
-    db.collection('blogs').add(req.body.blog).then((data)=>{    
+    db.collection('blogs').add(req.body).then((data)=>{    
       res.json({'blogId':data.id});
     })
     .catch((err)=>{

@@ -10,7 +10,7 @@
   padding: 20px;
   display: flex;
   align-items: center;
-  max-width: 600px;
+  max-width: 80%;
   margin: 0 auto;
   border-bottom: 1px solid #f2f2f2;
 }
@@ -29,7 +29,7 @@
   color: #f1356d;
 }
 .content {
-  max-width: 600px;
+  max-width: 80%;
   margin: 40px auto;
   padding: 20px;
 }
@@ -141,4 +141,17 @@ div.blogSpace{
   border-radius: 8px;
   border-width: thin;
   padding: 10px;
+}
+
+.wrapper-class {
+  padding: 1rem;
+  border: 1px solid #ccc;
+}
+.editor-class {
+  background-color:whitesmoke;
+  padding: 1rem;
+  border: 1px solid #ccc;
+}
+.toolbar-class {
+  border: 1px solid #ccc;
 }
