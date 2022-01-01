@@ -75,7 +75,7 @@ module.exports.getUserBlogs = function(req,res,next){
 
 module.exports.getAllBlogs = function(req,res,next){
   if(firebase.auth().currentUser==null) res.json({error:'user not found'});
-  db.collection('blogs').where('private','==',false).get().then((querySnapshot)=>{
+  db.collection('blogs').where('private','==',false).orderBy('likes','desc').get().then((querySnapshot)=>{
     blogs=[];
     querySnapshot.forEach((doc)=>{
       blogs.push({blogid:doc.id,blog:doc.data()});
