@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from "axios";
-import { useState, useRef } from "react";
+import { useState } from "react";
 import { useHistory } from "react-router-dom";
 import EditorComponent from '../editor/EditorComponent';
 

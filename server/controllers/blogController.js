@@ -5,6 +5,12 @@ const db=firebaseConfig.db
 
 module.exports.addBlog = function(req,res,next){
 
+    if(!req.body.blog.title && !req.body.blog.body)
+    {
+      res.json({error:"Please add a title and body"});
+      return;
+    }
+
     db.collection('blogs').add(req.body.blog).then((data)=>{    
       res.json({'blogId':data.id});
     })

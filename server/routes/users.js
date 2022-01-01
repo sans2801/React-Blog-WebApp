@@ -7,7 +7,7 @@ const likeController = require('../controllers/likeController');
 router.get('/currentUser', authController.currentUser);
 router.post('/express-signup', authController.signup);
 router.post('/express-login', authController.login);
-router.post('/express-logout', authController.logout);
+router.get('/express-logout', authController.logout);
 
 router.post('/firebase-blog', blogController.addBlog);
 router.get('/firebase-blog/:id', blogController.getBlog);

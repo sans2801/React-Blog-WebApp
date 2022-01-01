@@ -1,4 +1,3 @@
-import { useRef } from 'react';
 import { Editor } from '@tinymce/tinymce-react';
 
 const EditorComponent = (props)=>{

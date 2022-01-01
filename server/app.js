@@ -5,20 +5,19 @@ var logger = require('morgan');
 var cors = require('cors');
 var admin = require('firebase-admin');
 const serviceAccount = require('./firebase/serviceAccountKey.json');
+require('dotenv').config();
 
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
-  databaseURL: "https://ninja-blogs-5daff-default-rtdb.firebaseio.com"
+  databaseURL: process.env.DATABASE_URL
 });
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-
 var app = express();
-
 app.use(
   cors({
-    origin: 'http://localhost:3000',
+    origin: process.env.ORIGIN,
     credentials: true,
   })
 );
