@@ -7,7 +7,7 @@ const Navbar = (props) => {
     const handleLogout = () =>{
       if(props.user)
       {
-        axios.post('http://localhost:3001/users/express-logout').then((res)=>{
+        axios.post(`${process.env.REACT_APP_SERVER_API}/express-logout`).then((res)=>{
           props.onChange(null);
           history.push('/');
         })

@@ -17,13 +17,13 @@ const BlogDetails = (props) =>
 
     useEffect(()=>
     {
-        axios.get(`http://localhost:3001/users/firebase-blog/${id}`).then((res)=>{
+        axios.get(`${process.env.REACT_APP_SERVER_API}/firebase-blog/${id}`).then((res)=>{
             if(res.data.error) throw Error(res.data.error);
             setBlog(res.data);
             setIsprivate(res.data.private);
             setIsPending(false);
             
-            axios.post('http://localhost:3001/users/getliked',{blogid:id}).then((res)=>{
+            axios.post(`${process.env.REACT_APP_SERVER_API}/getliked`,{blogid:id}).then((res)=>{
                 if(res.data.error) throw Error(res.data.error);
                 setLikes(res.data.likes);
                 if(res.data.liked===1)
@@ -51,7 +51,7 @@ const BlogDetails = (props) =>
     const handlePublish = ()=>{
 
         setIsPending(true);
-        axios.post('http://localhost:3001/users/update',{ownerid:blog.uid,blogid:id,update:{private:false}}).then((res)=>{
+        axios.post(`${process.env.REACT_APP_SERVER_API}/update`,{ownerid:blog.uid,blogid:id,update:{private:false}}).then((res)=>{
             if(res.data.error) throw Error(res.data.error);
             setIsPending(false);
             setIsprivate(false);
@@ -65,7 +65,7 @@ const BlogDetails = (props) =>
     const handlePrivate= ()=>{
 
         setIsPending(true);
-        axios.post('http://localhost:3001/users/update',{ownerid:blog.uid,blogid:id,update:{private:true}}).then((res)=>{
+        axios.post(`${process.env.REACT_APP_SERVER_API}/update`,{ownerid:blog.uid,blogid:id,update:{private:true}}).then((res)=>{
             if(res.data.error) throw Error(res.data.error);
             setIsPending(false);
             setIsprivate(true);
@@ -82,8 +82,7 @@ const BlogDetails = (props) =>
 
     const handleDelete = ()=>{
 
-        axios.post('http://localhost:3001/users/delete', {ownerid:blog.uid,blogid:id}).then((res)=>{
-            console.log(res);
+        axios.post(`${process.env.REACT_APP_SERVER_API}/delete`, {ownerid:blog.uid,blogid:id}).then((res)=>{
             if(res.data.error) throw Error(res.data.error)
             else{
             history.push('/dashboard');}
@@ -95,9 +94,9 @@ const BlogDetails = (props) =>
 
     const handleLike = () =>{
         setIsPending(true);
-        axios.post('http://localhost:3001/users/like', {blogid:id}).then((res)=>{
+        axios.post(`${process.env.REACT_APP_SERVER_API}/like`, {blogid:id}).then((res)=>{
             if(res.data.error) throw Error(res.data.error)
-            axios.post('http://localhost:3001/users/getliked',{blogid:id}).then((res)=>{
+            axios.post(`${process.env.REACT_APP_SERVER_API}/getliked`,{blogid:id}).then((res)=>{
                 if(res.data.error) throw Error(res.data.error);
                 setLikes(res.data.likes);
                 if(res.data.liked===1)
@@ -118,9 +117,9 @@ const BlogDetails = (props) =>
 
     const handleUnLike = () =>{
         setIsPending(true);
-        axios.post('http://localhost:3001/users/unlike', {blogid:id}).then((res)=>{
+        axios.post(`${process.env.REACT_APP_SERVER_API}/unlike`, {blogid:id}).then((res)=>{
             if(res.data.error) throw Error(res.data.error)
-            axios.post('http://localhost:3001/users/getliked',{blogid:id}).then((res)=>{
+            axios.post(`${process.env.REACT_APP_SERVER_API}/getliked`,{blogid:id}).then((res)=>{
                 if(res.data.error) throw Error(res.data.error);
                 setLikes(res.data.likes);
                 if(res.data.liked===1)

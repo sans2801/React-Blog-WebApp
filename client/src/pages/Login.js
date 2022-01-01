@@ -20,7 +20,7 @@ const Login= (props)=>{
         setIsPending(true);
         const userAuth={email,password};
 
-        axios.post('http://localhost:3001/users/express-login',userAuth).then((res)=>{
+        axios.post(`${process.env.REACT_APP_SERVER_API}/express-login`,userAuth).then((res)=>{
             
             if(res.data.error)
                 throw Error(res.data.error);

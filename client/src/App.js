@@ -15,7 +15,7 @@ function App() {
   const [gotUser,setGotUser]=useState(false);
   if(!gotUser)
   {
-     axios.get('http://localhost:3001/users/currentUser').then((res)=>{
+     axios.get(`${process.env.REACT_APP_SERVER_API}/currentUser`).then((res)=>{
      setUser(res.data.user);
     });
     setGotUser(true);

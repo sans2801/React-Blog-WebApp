@@ -9,7 +9,7 @@ const Dashboard = (props) => {
     
     useEffect(()=>{
 
-      axios.get('http://localhost:3001/users/userBlogs').then((res)=>{
+      axios.get(`${process.env.REACT_APP_SERVER_API}/userBlogs`).then((res)=>{
       if(res.data.error) throw Error(res.data.error);
       else
       {

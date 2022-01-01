@@ -1,12 +1,3 @@
-/*
-Testing account
-username: test_account
-email: test@jest.com
-password: testjest
-http://localhost:3000/blogs/LQpRRXK0b6FHpiqeOzEg
-http://localhost:3000/blogs/BVXoMEPf3Eyws96QyADK
-*/
-
 const request = require('supertest');
 const app = require('../app');
 

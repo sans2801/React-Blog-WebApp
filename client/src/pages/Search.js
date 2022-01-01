@@ -8,7 +8,7 @@ const Search = (props) => {
   const [error, setError] = useState(null);
 
   useEffect(()=>{
-      axios.get('http://localhost:3001/users/all').then((res)=>{
+      axios.get(`${process.env.REACT_APP_SERVER_API}/all`).then((res)=>{
           if(res.data.error) throw Error(res.data.error);
           else
           {

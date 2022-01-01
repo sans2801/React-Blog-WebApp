@@ -1,12 +1,14 @@
 import React from 'react';
 import axios from "axios";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { useHistory } from "react-router-dom";
- 
+import EditorComponent from '../editor/EditorComponent';
+
 const Create = (props) =>{
 
     const [title,setTitle] = useState('');
     const [body,setBody] = useState('');
+    const [initialBody, setInitialBody] = useState('');
     const [isPending,setIsPending]=useState(false);
     const [error, setError]=useState(null)
     const [check,setCheck]=useState(false);
@@ -15,13 +17,8 @@ const Create = (props) =>{
     const toUpdate=history.location.state;
     if(toUpdate!=null && !check)
     {   
-        const newline=new RegExp("<br/>","g");
-        const imageOpen=new RegExp("<img class='imgClass' src='","g");
-        const imageClose=new RegExp("'/>","g");
-
-        const showBody=toUpdate.blog.body.replace(newline,'\n').replace(imageOpen,"!img<<").replace(imageClose,">>");
         setTitle(toUpdate.blog.title);
-        setBody(showBody);
+        setInitialBody(toUpdate.blog.body);
         setCheck(true);
     }
 
@@ -30,13 +27,13 @@ const Create = (props) =>{
         e.preventDefault();
 
         if(title==='') {alert('Please enter a title');return;}
-        if(body==='') {alert('Please enter contents of the blog');return;}
+        if(body.getContent()==='') {alert('Please enter contents of the blog');return;}
         const uid=props.user.uid;
         const author = props.user.displayName;
+        const article = body.getContent();
         setIsPending(true);
-        const blog={title,body,author,uid,private:true,likes:0};
-        const finalBlog = (JSON.stringify(blog)).replace(/\\n/g,"<br/>").replace(/!img<</g,"<img class='imgClass' src='").replace(/>>/g,"'/>");
-        axios.post('http://localhost:3001/users/firebase-blog',{'blog':JSON.parse(finalBlog)})
+        const blog={title,'body':article,author,uid,private:true,likes:0};
+        axios.post(`${process.env.REACT_APP_SERVER_API}/firebase-blog`,{'blog':blog})
         .then((res)=>{
             if(res.data.error)
             {
@@ -58,8 +55,7 @@ const Create = (props) =>{
         if(title==='') {alert('Please enter a title');return;}
         if(body==='') {alert('Please enter contents of the blog');return;}
         setIsPending(true);
-        const finalBlog = (JSON.stringify({title:title, body:body})).replace(/\\n/g,"<br/>").replace(/!img<</g,"<img class='imgClass' src='").replace(/>>/g,"'/>");
-        axios.post('http://localhost:3001/users/update',{ownerid:toUpdate.blog.uid,blogid:toUpdate.blogid,update:JSON.parse(finalBlog)}).then((res)=>{
+        axios.post(`${process.env.REACT_APP_SERVER_API}/update`,{ownerid:toUpdate.blog.uid,'blogid':toUpdate.blogid,update:{title:title, body:body.getContent()}}).then((res)=>{
             if(res.data.error) throw Error(res.data.error);
             setIsPending(false);
             history.push(`/blogs/${toUpdate.blogid}`);
@@ -83,15 +79,8 @@ const Create = (props) =>{
           value={title}
           onChange={(e) => setTitle(e.target.value)} 
             />
-        <label>Blog Body</label>
-        <textarea
-          name="blog-body"
-          id="blog-body"
-          required
-          value={body}
-          rows="40"
-          onChange={(e) => setBody(e.target.value)}
-        ></textarea>
+        <label className='body-label'>Blog Body</label>
+        <EditorComponent setBody={setBody} initialBody={initialBody}/>
 
         {toUpdate==null && !isPending && <button onClick={handleSubmit}>Submit</button>}
         {toUpdate==null && isPending && <button disabled>Adding Blog...</button>}

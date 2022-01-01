@@ -21,7 +21,7 @@ const SignUp = (props)=>{
 
         setIsPending(true);
         const user={username,email,password};
-        axios.post('http://localhost:3001/users/express-signup', user)
+        axios.post(`${process.env.REACT_APP_SERVER_API}/express-signup`, user)
         .then((res)=>{
 
             if(res.data.error)
