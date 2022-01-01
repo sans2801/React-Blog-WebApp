@@ -5,6 +5,7 @@ var logger = require('morgan');
 var cors = require('cors');
 var admin = require('firebase-admin');
 const serviceAccount = require('./firebase/serviceAccountKey.json');
+const path = require('path');
 require('dotenv').config();
 
 admin.initializeApp({
