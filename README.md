@@ -28,8 +28,9 @@ A full stack web application which aims to provide a platform for users to expre
 - Once the user logs in, they are greeted by the dashboard which consists of their profile picture and all the blogs written by them, along with the visibility of the blogs
 <img src="https://user-images.githubusercontent.com/56474333/147413446-1cabb936-5c63-4af6-a908-00e7d3b993a6.png" width="700" height="400" />
 
-- Users can add a new blog by clicking the option on the navbar. Images can be embedded in the body using the 'img' html tag. Further the body can be very well customized by adding html tags and inline css if required
-<img src="https://user-images.githubusercontent.com/56474333/147414769-f20df44f-ebe7-4768-b86d-6e9618760ef8.png" width="700" height="400"/>
+- Users can add a new blog by clicking the option on the navbar. Images can be embedded in the text editor easily (for now only through online url). Further the body can be very well customized by adding html tags and inline css if required
+<img src="https://user-images.githubusercontent.com/56474333/147846201-b40896b5-89c1-45db-bdd3-4af5ccccc4be.png" width="700" height="400"/>
+<img src="https://user-images.githubusercontent.com/56474333/147846274-4db009d8-0496-4366-9235-a0e84536ce5e.png" width="700" height="400"/>
 
 - Upon submitting the blog, initially it's visibility is private by default. The user can preview the blog before making it public. They can also edit, delete, like the blog. Number of likes is also shown below.
 <img src="https://user-images.githubusercontent.com/56474333/147414845-7850519c-30e8-4e1e-9ba9-d13e6eb1b809.png" width="700" height="400"/>
