@@ -18,7 +18,7 @@ A full stack web application which aims to provide a platform for users to expre
 - Leave a like on other public blogs
 - Get the most liked blogs in the search section!
 
-## :spaceship: Deployed at
+## :rocket: Deployed at
 https://ninja-blogs.herokuapp.com
 
 ## :computer: Screenshots and Working
