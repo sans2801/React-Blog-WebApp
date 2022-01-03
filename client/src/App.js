@@ -37,19 +37,19 @@ function App() {
                 <Home user={user}/>
               </Route>
 
-              <Route path = "/signup">
+              <Route exact path = "/signup">
                 {user==null ? <SignUp user={user} onChange={handleUser}/> : <Redirect to="/dashboard" user={user}/>}
               </Route>
 
-              <Route path="/login">
+              <Route exact path="/login">
               {user==null ? <Login user={user} onChange={handleUser}/> : <Redirect to="/dashboard" user={user}/>}
               </Route>
 
-              <Route path="/dashboard">
+              <Route exact path="/dashboard">
                 {user==null? <Login user={user} onChange={handleUser}/> : <Dashboard user={user}/>}
               </Route>
 
-              <Route path="/create">
+              <Route exact path="/create">
                 {user==null ? <Login user={user} onChange={handleUser}/> : <Create user={user} />}
               </Route>
 
@@ -60,6 +60,8 @@ function App() {
               <Route exact path="/search">
               {user==null ? <Login user={user} onChange={handleUser}/> : <Search user={user}/>}
               </Route>
+
+              <Route component={PageNotFound} />
 
           </Switch>
         </div>
