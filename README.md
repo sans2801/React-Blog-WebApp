@@ -21,6 +21,9 @@ A full stack web application which aims to provide a platform for users to expre
 ## :rocket: Deployed at
 https://ninja-blogs.herokuapp.com
 
+## :gear: Setup
+For configuring the codebase, please refer to [SETUP](https://github.com/sans2801/React-Blog-WebApp/blob/main/SETUP.md) Guide to get started with local deployment
+
 ## :computer: Screenshots and Working
 - Home page
 <img src="https://user-images.githubusercontent.com/56474333/147413060-cabe3689-dfba-43f0-977e-abfc09f67a81.png" width="700" height="400" />
@@ -46,5 +49,7 @@ https://ninja-blogs.herokuapp.com
 <img src="https://user-images.githubusercontent.com/56474333/147415052-d8e64919-d98c-45fe-b5ce-3544822c9fb8.png" width="700" height="500"/>
 
 
-
-
+## Contributions
+All kinds of contributions are welcomed :smiley:.
+Feel free to reach out to me on my email!
+[Contact Me](mailto:thakareprasad28@yahoo.in)
