@@ -24,7 +24,7 @@ $ npm install
 6. Create a firebase project and download the `serviceAccountKey.json` from your project and copy it to `/server/firebase`
 7. In your firebase console, go to `Project Settings -> General`, scroll down and select the npm option.
 8. From the code-block below, copy ONLY the `json object` of the form:
-```json
+```
 {
   apiKey: "********",
   authDomain: "********",
@@ -35,7 +35,7 @@ $ npm install
 }
 ```
 9. Create a file `/server/firebase/firebaseConfig.js` and paste the previously copied json in the file and then export it as follows:
-```json
+```
 module.exports = {
   apiKey: "********",
   authDomain: "********",
