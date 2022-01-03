@@ -7,7 +7,7 @@ A full stack web application which aims to provide a platform for users to expre
 - Backend : Node.js, Express
 - Database : Firebase
 - Testing: Jest, Supertest
-- Deployment: GitHub Actions, Heroku
+- Deployment: Heroku
 - Text Editor: TinyMCE
 
 ## :electron: Features Offered
@@ -17,6 +17,9 @@ A full stack web application which aims to provide a platform for users to expre
 - Update or delete existing blogs
 - Leave a like on other public blogs
 - Get the most liked blogs in the search section!
+
+## :rocket: Deployed at
+https://ninja-blogs.herokuapp.com
 
 ## :computer: Screenshots and Working
 - Home page
