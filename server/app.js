@@ -1,11 +1,11 @@
-var createError = require('http-errors');
-var express = require('express');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
-var cors = require('cors');
-var admin = require('firebase-admin');
+const createError = require('http-errors');
+const express = require('express');
+const cookieParser = require('cookie-parser');
+const logger = require('morgan');
+const cors = require('cors');
+const admin = require('firebase-admin');
 const serviceAccount = require('./firebase/serviceAccountKey.json');
-const path = require('path');
+
 require('dotenv').config();
 
 admin.initializeApp({

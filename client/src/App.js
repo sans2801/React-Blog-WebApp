@@ -9,6 +9,7 @@ import { useState } from 'react';
 import axios from 'axios';
 import Dashboard from './pages/Dashboard';
 import Search from './pages/Search';
+import PageNotFound from './pages/404-page';
 function App() {
 
   const [user,setUser] = useState(null);
