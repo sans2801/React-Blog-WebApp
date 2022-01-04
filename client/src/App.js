@@ -22,8 +22,8 @@ function App() {
     setGotUser(true);
   }
 
-  function handleUser(val)
-  {
+  function handleUser(val) // this function is passed to the children in case the user
+  {                        //logs in on some other page, their data will be available globally
     setUser(val);
   }
 
