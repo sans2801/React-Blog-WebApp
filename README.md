@@ -6,7 +6,7 @@ A full stack web application which aims to provide a platform for users to expre
 - Frontend : React
 - Backend : Node.js, Express
 - Database : Firebase
-- Testing: Jest, Supertest
+- Testing: Jest
 - Deployment: Heroku
 - Text Editor: TinyMCE
 
